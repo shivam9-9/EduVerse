@@ -1,5 +1,5 @@
 {
-  "name": "eduverse",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,17 +7,9 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shivam9-9/EduVerse.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/shivam9-9/EduVerse/issues"
-  },
-  "homepage": "https://github.com/shivam9-9/EduVerse#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.7",
