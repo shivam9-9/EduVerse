@@ -29,11 +29,13 @@ const userSchema = new mongoose.Schema({
     required: true,
     ref: "Profile",
   },
-  course: {
-    type: mongoose.Schema.Types.ObjectId,
+  courses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
 
-    ref: "Course",
-  },
+      ref: "Course",
+    },
+  ],
   image: {
     type: String,
     required: true,
