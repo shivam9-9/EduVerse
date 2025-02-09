@@ -1,5 +1,5 @@
 const Course = require("../models/Course");
-const Tag = require("../models/Tags");
+const Tag = require("../models/Category");
 const User = require("../models/User");
 const { uploadToCloudinary } = require("../utils/imageUploader");
 require("dotenv").config();
@@ -136,3 +136,50 @@ exports.showAllCourses = async (req, res) => {
     });
   }
 };
+
+//get couse details
+exports.getCourseDetails = async(req,res)=>{
+  try{
+        const {courseId} = req.body;
+
+        const courseDetails = await Course.find(
+          {_id:courseId},
+
+        ).populate({
+          path:"instructor",
+          populate:{
+            path:"additionalDetails",
+          },
+        })
+        .populate("category")
+        .populate("ratingAndRevies")
+        .populate({
+          path:"courseContent",
+          populate:{
+            path:"subSection",
+          },
+        })
+        .exec();
+//validation
+if(!courseDetails){
+  return res.status(400).json({
+    success:false,
+    message:`could not find the course with course id : ${courseId}`,
+  })
+}
+return res.status(200).json({
+  success:true,
+  message:"course details fetched successfully",
+  courseDetails,
+
+})
+
+  }
+  catch(error){
+console.log(error);
+return res.status(500).json({
+  success:false,
+  message:error.message,
+});
+  }
+}
