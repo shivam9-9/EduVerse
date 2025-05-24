@@ -98,6 +98,8 @@ exports.signup = async (req, res) => {
       image: "",
     })
 
+    console.log("user created: ",user);
+
     return res.status(200).json({
       success: true,
       user,
